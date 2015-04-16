@@ -17,7 +17,7 @@ public class DateResource {
 	public DateModel getDate(){
 		DateModel model = new DateModel();
 		model.setSysdate(Calendar.getInstance().getTime().toString());
-		model.setTimeZone(Calendar.getInstance().getTimeZone().toString());
+		model.setTimeZone(Calendar.getInstance().getTimeZone().getDisplayName());
 		return model;
 	}
 }
