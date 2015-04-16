@@ -13,6 +13,6 @@ public class DateResource {
 	@GET
     @Produces(value = MediaType.APPLICATION_JSON)
 	public String getDate(){
-		return Calendar.getInstance().getTime().toString();
+		return "{'sysdate':"+"'"+Calendar.getInstance().getTime().toString()+"'}";
 	}
 }
