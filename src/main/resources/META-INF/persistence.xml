@@ -8,4 +8,4 @@
 		</properties>
 		<class>cfairtest.entity.TradeMessage</class>
 	</persistence-unit>
-</persistence>
+</persistence> 
