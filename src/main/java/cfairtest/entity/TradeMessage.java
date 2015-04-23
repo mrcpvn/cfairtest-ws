@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 //{"userId": "134256", "currencyFrom": "EUR", "currencyTo": "GBP", "amountSell": 1000, "amountBuy": 747.10, "rate": 0.7471, "timePlaced" : "24-JAN-15 10:27:44", "originatingCountry" : "FR"}
 @Entity
-@Table(name="TRADE_MESSAGE")
+@Table(name = "TRADE_MESSAGE")
 public class TradeMessage implements Serializable {
 
 	/**
@@ -21,23 +21,23 @@ public class TradeMessage implements Serializable {
 
 	@Id
 	@GeneratedValue
-	@Column(name="TRANSACTION_ID")
+	@Column(name = "TRANSACTION_ID")
 	private int transactionId;
-	@Column(name="USER_ID")
+	@Column(name = "USER_ID")
 	private String userId;
-	@Column(name="CURRENCY_FROM")
+	@Column(name = "CURRENCY_FROM")
 	private String currencyFrom;
-	@Column(name="CURRENCY_TO")
+	@Column(name = "CURRENCY_TO")
 	private String currencyTo;
-	@Column(name="AMOUNT_SELL")
+	@Column(name = "AMOUNT_SELL")
 	private double amountSell;
-	@Column(name="AMOUNT_BUY")
+	@Column(name = "AMOUNT_BUY")
 	private double amountBuy;
-	@Column(name="RATE")
+	@Column(name = "RATE")
 	private double rate;
-	@Column(name="TIME_PLACED")
+	@Column(name = "TIME_PLACED")
 	private Date timePlaced;
-	@Column(name="ORIGINATING_COUNTRY")
+	@Column(name = "ORIGINATING_COUNTRY")
 	private String originatingCountry;
 
 	public int getTransactionId() {
