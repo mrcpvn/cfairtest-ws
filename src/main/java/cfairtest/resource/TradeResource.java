@@ -14,7 +14,7 @@ import javax.ws.rs.core.MediaType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import cfairtest.dao.GenericDao;
+import cfairtest.dao.TradeMessageDao;
 import cfairtest.entity.TradeMessage;
 
 @Path("/trade")
@@ -24,7 +24,7 @@ public class TradeResource {
 	private final Logger LOG = LoggerFactory.getLogger(TradeResource.class);
 	
 	@EJB
-	private GenericDao dao;
+	private TradeMessageDao dao;
 	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
