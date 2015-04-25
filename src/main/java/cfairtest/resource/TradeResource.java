@@ -18,6 +18,7 @@ import cfairtest.dao.TradeMessageDao;
 import cfairtest.entity.TradeMessage;
 
 @Path("/trade")
+@Stateless
 public class TradeResource {
 
 	private final Logger LOG = LoggerFactory.getLogger(TradeResource.class);
