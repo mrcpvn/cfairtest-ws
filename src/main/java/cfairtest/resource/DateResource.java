@@ -1,4 +1,4 @@
-package cfairtest.rest;
+package cfairtest.resource;
 
 import java.util.Calendar;
 

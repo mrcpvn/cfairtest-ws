@@ -1,4 +1,4 @@
-package cfairtest.rest;
+package cfairtest.resource;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
