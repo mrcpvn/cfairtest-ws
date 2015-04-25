@@ -6,8 +6,6 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import cfairtest.entity.TradeMessage;
-
 @Stateless
 public class GenericDao {
 

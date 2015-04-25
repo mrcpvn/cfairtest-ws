@@ -1,5 +1,6 @@
 package cfairtest.resource;
 
+
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -21,7 +22,7 @@ public class TradeResource {
 	private final Logger LOG = LoggerFactory.getLogger(TradeResource.class);
 	
 	@EJB
-	GenericDao dao;
+	private GenericDao dao;
 	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
