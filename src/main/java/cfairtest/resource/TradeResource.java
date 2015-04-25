@@ -2,6 +2,7 @@ package cfairtest.resource;
 
 
 import javax.ejb.EJB;
+import javax.ejb.Stateless;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -17,6 +18,7 @@ import cfairtest.dao.GenericDao;
 import cfairtest.entity.TradeMessage;
 
 @Path("/trade")
+@Stateless
 public class TradeResource {
 
 	private final Logger LOG = LoggerFactory.getLogger(TradeResource.class);
