@@ -1,5 +1,7 @@
 package cfairtest.model;
 
+import javax.validation.constraints.NotNull;
+
 
 public class TradeModel {
 
@@ -12,6 +14,7 @@ public class TradeModel {
 	private String timePlaced;
 	private String originatingCountry;
 
+	@NotNull
 	public String getUserId() {
 		return userId;
 	}
