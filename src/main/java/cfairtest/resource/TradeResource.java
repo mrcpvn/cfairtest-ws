@@ -54,6 +54,6 @@ public class TradeResource {
 	@Path("/{id}")
 	public TradeMessage readTrade(@PathParam("id") String id) {
 		LOG.debug("read trade " + id);
-		return dao.findById(id);
+		return dao.findById(Integer.parseInt(id));
 	}
 }
