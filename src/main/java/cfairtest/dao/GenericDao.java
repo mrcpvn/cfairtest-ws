@@ -11,6 +11,10 @@ public class GenericDao<T> {
 
 	@PersistenceContext
 	private EntityManager em;
+	
+	public GenericDao() {
+		super();
+	}
 
 	public GenericDao(Class<T> entityClass) {
 		this.entityClass = entityClass;
