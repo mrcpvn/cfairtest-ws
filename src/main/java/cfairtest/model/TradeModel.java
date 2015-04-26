@@ -1,8 +1,6 @@
 package cfairtest.model;
 
 
-import static cfairtest.constants.Constants.*;
-
 public class TradeModel {
 
 	private String userId;
