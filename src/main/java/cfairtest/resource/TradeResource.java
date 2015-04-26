@@ -45,7 +45,7 @@ public class TradeResource {
 		entity.setRate(trade.getRate());
 		entity.setTimePlaced(parserSDF.parse(trade.getTimePlaced()));
 		entity.setOriginatingCountry(trade.getOriginatingCountry());
-		dao.persist(trade);
+		dao.persist(entity);
 		LOG.debug("trade created");
 	}
 
