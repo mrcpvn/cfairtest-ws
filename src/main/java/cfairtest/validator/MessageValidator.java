@@ -19,7 +19,7 @@ public final class MessageValidator{
 		Set<ConstraintViolation<T>> constraintViolations = validator.validate(message);
 		if(constraintViolations.size() != 0){
 			for(ConstraintViolation<T> violation : constraintViolations){
-				throw new BadRequestException(violation.getMessage());
+				throw new BadRequestException(violation.getInvalidValue()+" "+violation.getMessage());
 			}
 		}
 	}
