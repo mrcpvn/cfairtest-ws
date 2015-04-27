@@ -50,4 +50,14 @@ public class TradeResourceIT {
         assertEquals("error validate new trade",400, response.getStatus());
         
 	}
+	
+	@Test
+	public void testTradeNotFound(){
+		WebTarget target = client.target("http://cfairtest-mrcpvn.rhcloud.com/api/trade/8888");
+		//String testTrade = "{\"userId\": \"   \", \"currencyFrom\": \"EUR\", \"currencyTo\": \"GBP\", \"amountSell\": 1000, \"amountBuy\": 747.10, \"rate\": 0.7471, \"timePlaced\" : \"24-JAN-15 10:27:44\", \"originatingCountry\" : \"FR\"}";
+        Response response = target.request().get();
+        System.out.println(response.getStatus());
+        assertEquals("error trade should not be found",404, response.getStatus());
+        
+	}
 }
