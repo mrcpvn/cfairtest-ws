@@ -14,12 +14,14 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import org.junit.validator.ValidateWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import cfairtest.dao.TradeMessageDao;
 import cfairtest.entity.TradeMessage;
 import cfairtest.model.TradeModel;
+import cfairtest.validator.MessageValidator;
 import static cfairtest.constants.Constants.*;
 
 @Path("/trade")
@@ -35,6 +37,8 @@ public class TradeResource {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void createTrade(TradeModel trade) throws ParseException {
+		LOG.debug("validate new trade");
+		MessageValidator.validate(trade);
 		LOG.debug("persist new trade");
 		TradeMessage entity = new TradeMessage();
 		entity.setUserId(trade.getUserId());
