@@ -2,19 +2,28 @@ package cfairtest.model;
 
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 
 public class TradeModel {
 
+	@NotEmpty
 	private String userId;
+	@NotNull
 	private String currencyFrom;
+	@NotNull
 	private String currencyTo;
+	@NotNull
 	private double amountSell;
+	@NotNull
 	private double amountBuy;
+	@NotNull
 	private double rate;
+	@NotNull
 	private String timePlaced;
+	@NotNull
 	private String originatingCountry;
 
-	@NotNull
 	public String getUserId() {
 		return userId;
 	}

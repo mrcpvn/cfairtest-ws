@@ -9,6 +9,7 @@ import javax.ws.rs.core.Response;
 
 import org.junit.Before;
 import org.junit.Test;
+import static org.junit.Assert.*;
 
 
 public class TradeResourceIT {
@@ -26,6 +27,8 @@ public class TradeResourceIT {
 		String testTrade = "{\"userId\": \"134256\", \"currencyFrom\": \"EUR\", \"currencyTo\": \"GBP\", \"amountSell\": 1000, \"amountBuy\": 747.10, \"rate\": 0.7471, \"timePlaced\" : \"24-JAN-15 10:27:44\", \"originatingCountry\" : \"FR\"}";
         Response response = target.request().post(Entity.entity(testTrade, MediaType.APPLICATION_JSON));
         System.out.println(response.getStatus());
+        assertEquals("error post new trade",204, response.getStatus());
+        
 	}
 	
 	@Test
@@ -34,5 +37,7 @@ public class TradeResourceIT {
 		String testTrade = "{\"currencyFrom\": \"EUR\", \"currencyTo\": \"GBP\", \"amountSell\": 1000, \"amountBuy\": 747.10, \"rate\": 0.7471, \"timePlaced\" : \"24-JAN-15 10:27:44\", \"originatingCountry\" : \"FR\"}";
         Response response = target.request().post(Entity.entity(testTrade, MediaType.APPLICATION_JSON));
         System.out.println(response.getStatus());
+        System.out.println(response.getEntity());
+        assertEquals("error validate new trade",400, response.getStatus());
 	}
 }
