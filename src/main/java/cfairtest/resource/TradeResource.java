@@ -1,6 +1,5 @@
 package cfairtest.resource;
 
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
@@ -14,7 +13,6 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import org.junit.validator.ValidateWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
