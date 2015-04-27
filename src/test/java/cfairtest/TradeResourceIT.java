@@ -40,4 +40,14 @@ public class TradeResourceIT {
         System.out.println(response.getEntity());
         assertEquals("error validate new trade",400, response.getStatus());
 	}
+	
+	@Test
+	public void testTradeCreationUseridEmpty(){
+		WebTarget target = client.target("http://cfairtest-mrcpvn.rhcloud.com/api/trade");
+		String testTrade = "{\"userId\": \"   \", \"currencyFrom\": \"EUR\", \"currencyTo\": \"GBP\", \"amountSell\": 1000, \"amountBuy\": 747.10, \"rate\": 0.7471, \"timePlaced\" : \"24-JAN-15 10:27:44\", \"originatingCountry\" : \"FR\"}";
+        Response response = target.request().post(Entity.entity(testTrade, MediaType.APPLICATION_JSON));
+        System.out.println(response.getStatus());
+        assertEquals("error post new trade",204, response.getStatus());
+        
+	}
 }
