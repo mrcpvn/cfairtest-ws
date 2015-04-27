@@ -12,12 +12,14 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import cfairtest.dao.TradeMessageDao;
 import cfairtest.entity.TradeMessage;
+import cfairtest.exception.NotFoundException;
 import cfairtest.model.TradeModel;
 import cfairtest.validator.MessageValidator;
 import static cfairtest.constants.Constants.*;
@@ -57,15 +59,19 @@ public class TradeResource {
 	public TradeModel readTrade(@PathParam("id") String id) {
 		LOG.debug("read trade " + id);
 		TradeMessage entity = dao.findById(Integer.parseInt(id));
-		TradeModel response = new TradeModel();
-		response.setUserId(entity.getUserId());
-		response.setCurrencyFrom(entity.getCurrencyFrom());
-		response.setCurrencyTo(entity.getCurrencyTo());
-		response.setAmountSell(entity.getAmountSell());
-		response.setAmountBuy(entity.getAmountBuy());
-		response.setRate(entity.getRate());
-		response.setTimePlaced(parserSDF.format(entity.getTimePlaced()));
-		response.setOriginatingCountry(entity.getOriginatingCountry());
-		return response;
+		if (entity != null) {
+			TradeModel response = new TradeModel();
+			response.setUserId(entity.getUserId());
+			response.setCurrencyFrom(entity.getCurrencyFrom());
+			response.setCurrencyTo(entity.getCurrencyTo());
+			response.setAmountSell(entity.getAmountSell());
+			response.setAmountBuy(entity.getAmountBuy());
+			response.setRate(entity.getRate());
+			response.setTimePlaced(parserSDF.format(entity.getTimePlaced()));
+			response.setOriginatingCountry(entity.getOriginatingCountry());
+			return response;
+		}else{
+			throw new NotFoundException();
+		}
 	}
 }
