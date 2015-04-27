@@ -1,5 +1,7 @@
 package cfairtest.model;
 
+import javax.validation.constraints.NotNull;
+
 import org.hibernate.validator.constraints.NotBlank;
 
 
@@ -11,11 +13,11 @@ public class TradeModel {
 	private String currencyFrom;
 	@NotBlank
 	private String currencyTo;
-	@NotBlank
+	@NotNull
 	private double amountSell;
-	@NotBlank
+	@NotNull
 	private double amountBuy;
-	@NotBlank
+	@NotNull
 	private double rate;
 	@NotBlank
 	private String timePlaced;
