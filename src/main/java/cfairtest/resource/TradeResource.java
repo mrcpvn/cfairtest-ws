@@ -54,8 +54,18 @@ public class TradeResource {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/{id}")
-	public TradeMessage readTrade(@PathParam("id") String id) {
+	public TradeModel readTrade(@PathParam("id") String id) {
 		LOG.debug("read trade " + id);
-		return dao.findById(Integer.parseInt(id));
+		TradeMessage entity = dao.findById(Integer.parseInt(id));
+		TradeModel response = new TradeModel();
+		response.setUserId(entity.getUserId());
+		response.setCurrencyFrom(entity.getCurrencyFrom());
+		response.setCurrencyTo(entity.getCurrencyTo());
+		response.setAmountSell(entity.getAmountSell());
+		response.setAmountBuy(entity.getAmountBuy());
+		response.setRate(entity.getRate());
+		response.setTimePlaced(parserSDF.format(entity.getTimePlaced()));
+		response.setOriginatingCountry(entity.getOriginatingCountry());
+		return response;
 	}
 }

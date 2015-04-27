@@ -47,7 +47,7 @@ public class TradeResourceIT {
 		String testTrade = "{\"userId\": \"   \", \"currencyFrom\": \"EUR\", \"currencyTo\": \"GBP\", \"amountSell\": 1000, \"amountBuy\": 747.10, \"rate\": 0.7471, \"timePlaced\" : \"24-JAN-15 10:27:44\", \"originatingCountry\" : \"FR\"}";
         Response response = target.request().post(Entity.entity(testTrade, MediaType.APPLICATION_JSON));
         System.out.println(response.getStatus());
-        assertEquals("error post new trade",204, response.getStatus());
+        assertEquals("error validate new trade",400, response.getStatus());
         
 	}
 }
