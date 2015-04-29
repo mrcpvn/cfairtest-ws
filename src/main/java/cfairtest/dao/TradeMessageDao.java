@@ -13,7 +13,8 @@ public class TradeMessageDao extends GenericDao<TradeMessage>{
 	
 	public TradeMessage findLastMessage(){
 		TradeMessage result = null;
-		result = (TradeMessage) em.createQuery("select max(e.transactionId) from TradeMessage e").getSingleResult();
+		Integer maxId = (Integer) em.createQuery("select max(e.transactionId) from TradeMessage e").getSingleResult();
+		result = this.findById(maxId);
 		return result;
 	}
 }
