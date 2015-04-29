@@ -10,7 +10,7 @@ public class GenericDao<T> {
 	protected Class<T> entityClass;
 
 	@PersistenceContext
-	private EntityManager em;
+	protected EntityManager em;
 	
 	public GenericDao() {
 		super();
