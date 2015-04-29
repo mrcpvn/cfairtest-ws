@@ -5,16 +5,20 @@ import javax.ejb.Stateless;
 import cfairtest.entity.TradeMessage;
 
 @Stateless
-public class TradeMessageDao extends GenericDao<TradeMessage>{
+public class TradeMessageDao extends GenericDao<TradeMessage> {
 
-	public TradeMessageDao(){
+	public TradeMessageDao() {
 		super(TradeMessage.class);
 	}
-	
-	public TradeMessage findLastMessage(){
+
+	public TradeMessage findLastMessage() {
 		TradeMessage result = null;
-		Integer maxId = (Integer) em.createQuery("select max(e.transactionId) from TradeMessage e").getSingleResult();
-		result = this.findById(maxId);
+		Integer maxId = (Integer) em.createQuery(
+				"select max(e.transactionId) from TradeMessage e")
+				.getSingleResult();
+		if (maxId != null) {
+			result = this.findById(maxId);
+		}
 		return result;
 	}
 }
