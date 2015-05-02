@@ -10,11 +10,15 @@ import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import org.jboss.resteasy.util.GenericType;
 import org.junit.Before;
 import org.junit.Test;
 
 import static cfairtest.constants.Constants.DATE_FORMAT;
 import static org.junit.Assert.*;
+import cfairtest.model.TradeData;
+
+import java.util.List;
 
 public class TradeResourceIT {
 
@@ -73,4 +77,24 @@ public class TradeResourceIT {
 		assertEquals("error trade should not be found", 404,
 				response.getStatus());
 	}
+	
+	@Test
+	public void testStats(){
+		WebTarget target = client
+				.target("http://cfairtest-mrcpvn.rhcloud.com/api/trade");
+		for (int i = 0; i < 150; i++) {
+			String testTrade = "{\"userId\": \"134257\", \"currencyFrom\": \"EUR\", \"currencyTo\": \"GBP\", \"amountSell\": 1000, \"amountBuy\": 747.10, \"rate\": 0.7471, \"timePlaced\" : \""
+					+ parserSDF.format(Calendar.getInstance().getTime())
+					+ "\", \"originatingCountry\" : \"FR\"}";
+			Response response = target.request().post(
+					Entity.entity(testTrade, MediaType.APPLICATION_JSON));
+			System.out.println(response.getStatus());
+			assertEquals("error post new trade", 204, response.getStatus());
+		}
+		target = client
+				.target("http://cfairtest-mrcpvn.rhcloud.com/api/trade/stats");
+		Response response = target.request().get();
+		assertEquals("error getting stats", 200, response.getStatus());
+	}
+	
 }

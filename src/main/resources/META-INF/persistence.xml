@@ -4,8 +4,8 @@
 			see .openshift/config/standalone.xml . -->
 		<jta-data-source>java:jboss/datasources/MySQLDS</jta-data-source>
 		<properties>
-			<property name="hibernate.show_sql" value="true" />
-			<property name="hibernate.hbm2ddl.auto" value="create" />
+			<property name="hibernate.show_sql" value="false" />
+			<property name="hibernate.hbm2ddl.auto" value="validate" />
 		</properties>
 		<class>cfairtest.entity.TradeMessage</class>
 	</persistence-unit>
