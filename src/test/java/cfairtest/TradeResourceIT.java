@@ -24,8 +24,8 @@ public class TradeResourceIT {
 	public void testTradeCreation() {
 		WebTarget target = client
 				.target("http://cfairtest-mrcpvn.rhcloud.com/api/trade");
-		String testTrade = "{\"userId\": \"134256\", \"currencyFrom\": \"EUR\", \"currencyTo\": \"GBP\", \"amountSell\": 1000, \"amountBuy\": 747.10, \"rate\": 0.7471, \"timePlaced\" : \"24-JAN-15 10:27:44\", \"originatingCountry\" : \"FR\"}";
-		for(int i = 0; i<11;i++){
+		String testTrade = "{\"userId\": \"134257\", \"currencyFrom\": \"EUR\", \"currencyTo\": \"GBP\", \"amountSell\": 1000, \"amountBuy\": 747.10, \"rate\": 0.7471, \"timePlaced\" : \"24-JAN-15 10:27:44\", \"originatingCountry\" : \"FR\"}";
+		for(int i = 0; i<10;i++){
 		Response response = target.request().post(
 				Entity.entity(testTrade, MediaType.APPLICATION_JSON));
 		System.out.println(response.getStatus());

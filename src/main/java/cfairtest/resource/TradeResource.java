@@ -2,6 +2,7 @@ package cfairtest.resource;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -12,6 +13,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,8 +21,10 @@ import cfairtest.dao.TradeMessageDao;
 import cfairtest.entity.TradeMessage;
 import cfairtest.exception.NotFoundException;
 import cfairtest.model.TradeModel;
+import cfairtest.processor.MessageProcessor;
 import cfairtest.validator.MessageValidator;
 import static cfairtest.constants.Constants.*;
+import cfairtest.model.TradeData;
 
 @Path("/trade")
 @Stateless
@@ -31,12 +35,16 @@ public class TradeResource {
 
 	@EJB
 	private TradeMessageDao dao;
+	@EJB
+	private MessageProcessor processor;
 
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void createTrade(TradeModel trade) throws ParseException {
 		LOG.debug("validate new trade");
 		MessageValidator.validate(trade);
+		LOG.debug("process trades");
+		processor.processTradeModel(trade); 
 		LOG.debug("persist new trade");
 		TradeMessage entity = new TradeMessage();
 		entity.setUserId(trade.getUserId());
@@ -78,5 +86,12 @@ public class TradeResource {
 		}
 	}
 	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/stats")
+	public List<TradeData> getStats(){
+		//get list of processed messages
+		return processor.getTradeStats();
+	}
 	
 }
