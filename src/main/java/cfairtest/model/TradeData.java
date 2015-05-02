@@ -4,14 +4,14 @@ import java.util.Date;
 
 public class TradeData {
 
-	private Date date;
+	private String date;
 	private int counter;
 
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 

@@ -36,7 +36,7 @@ public class MessageProcessor {
 				// new element: create new element, remove oldest
 				TradeData newElement = new TradeData();
 				newElement.setCounter(1);
-				newElement.setDate(tradeDate);
+				newElement.setDate(parserSDF.format(tradeDate));
 				cache.put(tradeDate, newElement);
 				timeList.add(tradeDate);
 				if (timeList.size() > MAX_CACHE_SIZE) {
